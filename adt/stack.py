@@ -1,4 +1,4 @@
-#!/usr/bin/python
+# !/usr/bin/python
 # coding:utf-8
 
 
@@ -9,11 +9,11 @@ class Stack:
 
     # check whether stack is empty or not
     def isEmpty(self):
-        return self.nodes == []
+        return (self.nodes == [])
 
     # remove the element on top of the stack
     def pop(self):
-        self.nodes.pop()
+        return self.nodes.pop()
 
     # insert a new element at the top of the stack
     def push(self, node):

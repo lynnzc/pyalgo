@@ -1,0 +1,9 @@
+# Byte-compiled dir
+__pycache__
+
+# c extensions
+*.so
+
+# Distribution / packaging
+bin
+build

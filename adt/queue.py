@@ -1,4 +1,4 @@
-#!/usr/bin/python
+# !/usr/bin/python
 # coding:utf-8
 
 
@@ -8,10 +8,16 @@ class Queue:
 
     # return whether queue is empty or not
     def isEmpty(self):
-        return self.nodes == []
+        return (self.nodes == [])
 
+    # insert a new node to the rear of the queue
     def enqueue(self, node):
-        pass
+        self.nodes.insert(0, node)
 
-    def dequeue(self, node):
-        pass
+    # remove the front node from the queue
+    def dequeue(self):
+        return self.nodes.pop()
+
+    # return the number of nodes in the queue
+    def size(self):
+        return len(self.nodes)
