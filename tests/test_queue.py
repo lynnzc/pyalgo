@@ -2,22 +2,35 @@
 # coding:utf-8
 
 import sys
-sys.path.insert(0, "..")
+sys.path.insert(0, '..')
 
 from adt.queue import Queue
 
 
 def testEnqueueQueue(queue, nodes):
+    print("enqueue nodes:", end=' ')
     for n in nodes:
+        print(n, end=' ')
         queue.enqueue(n)
-    print("queue enqueue ok")
+    print("\nqueue enqueue ok")
 
 
-def testPrintQueue(queue):
-    print("queue:", end=' ')
-    while(queue.size() > 0):
-        print(queue.dequeue(), end=' ')
+def testPrintAllQueue(queue):
+    recursivePrintQueue(queue)
     print("")
+
+
+def recursivePrintQueue(queue):
+    if(queue.size() > 0):
+        n = queue.dequeue()
+        recursivePrintQueue(queue)
+        print(n, end=' ')
+    else:
+        print("queue from first to last:", end=' ')
+
+
+def testDequeueQueue(queue):
+    print("queue dequeue node: ", queue.dequeue())
 
 
 def testSizeQueue(queue):
@@ -34,6 +47,8 @@ if __name__ == "__main__":
 
     testSizeQueue(q)
 
-    testPrintQueue(q)
+    testDequeueQueue(q)
+
+    testPrintAllQueue(q)
 
     testEmptyQueue(q)

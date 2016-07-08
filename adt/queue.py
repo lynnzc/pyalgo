@@ -16,7 +16,7 @@ class Queue:
 
     # remove the front node from the queue
     def dequeue(self):
-        return self.nodes.pop()
+        return self.nodes.pop(0)
 
     # return the number of nodes in the queue
     def size(self):

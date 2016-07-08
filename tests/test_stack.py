@@ -14,7 +14,7 @@ def testPrintStack(stack):
 
 def recurPrintStack(stack):
     if (stack.size() == 0):
-        print("stack: ", end=" ")
+        print("stack from bottom to top: ", end=" ")
     elif(stack.size() > 0):
         i = stack.pop()
         recurPrintStack(stack)
@@ -22,8 +22,15 @@ def recurPrintStack(stack):
 
 
 def testPushStack(stack, nodes):
+    print("stack push nodes:", end=' ')
     for n in nodes:
+        print(n, end=' ')
         stack.push(n)
+    print("")
+
+
+def testPopStack(stack):
+    print("stack pop node: ", stack.pop())
 
 
 def testSizeStack(stack):
@@ -39,11 +46,13 @@ if __name__ == "__main__":
 
     testPushStack(s, [1, 2, 3, 4, 5])
     testPrintStack(s)
-    testPushStack(s, [12, 13])
-
     testEmptyStack(s)
 
-    testPrintStack(s)
+    testPushStack(s, [12, 13])
+    testEmptyStack(s)
+
     testPushStack(s, [22, 33])
+    testPopStack(s)
+    testPrintStack(s)
 
     testSizeStack(s)
