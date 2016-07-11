@@ -44,7 +44,7 @@ class List:
 
     # insert a node to the end of the list
     def append(self, node):
-        self.insert(node, self.size() - 1)
+        self.insert(node, self.size())
 
     # insert a node to the first of the list
     def add(self, node):
@@ -74,14 +74,26 @@ class List:
     # remove and return the node at the end of the list, or return None
     def pop(self):
         cur = self.header
-
-        while (cur is not None) and (cur.next is not None):
+        pre = None
+        while (cur is not None) and (cur.next() is not None):
+            pre = cur
             cur = cur.next()
 
-        if cur is None:
+        if pre is None:
+            if (cur is not None) and (cur.next() is None):
+                # list just has only one node
+                node = cur.get()
+                cur = None
+                self.header = cur
+                return node
+            # it's a empty list
             return None
         else:
-            return cur
+            # common case
+            node = cur.get()
+            cur = None
+            pre.setNext(cur)
+            return node
 
     # return the first index of the node in the list if exists, or return -1
     def index(self, node):
@@ -106,12 +118,20 @@ class List:
             cur = cur.next()
         return False
 
+    def __str__(self):
+        cur = self.header
+        l = []
+        while cur is not None:
+            l.append(cur.value)
+            cur = cur.next()
+        return l
+
     # represent a node in the list
     class Node:
 
         def __init__(self, value):
             self.value = value
-            self.next = None
+            self.nextNode = None
 
         # return the value of the Node
         def get(self):
@@ -123,8 +143,8 @@ class List:
 
         # return the next node
         def next(self):
-            return self.next
+            return self.nextNode
 
         # set the next node
-        def setNext(self, next):
-            self.next = next
+        def setNext(self, nextNode):
+            self.nextNode = nextNode
