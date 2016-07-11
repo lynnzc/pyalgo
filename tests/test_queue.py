@@ -4,51 +4,27 @@
 import sys
 sys.path.insert(0, '..')
 
+import unittest
 from adt.queue import Queue
 
 
-def testEnqueueQueue(queue, nodes):
-    print("enqueue nodes:", end=' ')
-    for n in nodes:
-        print(n, end=' ')
-        queue.enqueue(n)
-    print("\nqueue enqueue ok")
+class TestQueueCase(unittest.TestCase):
 
+    def test_size(self):
+        q = Queue()
+        self.assertEqual(q.size(), 0)
+        test_list = [1, 2, 3]
+        for i in test_list:
+            q.enqueue(i)
+        self.assertEqual(q.size(), 3)
 
-def testPrintAllQueue(queue):
-    recursivePrintQueue(queue)
-    print("")
-
-
-def recursivePrintQueue(queue):
-    if(queue.size() > 0):
-        n = queue.dequeue()
-        recursivePrintQueue(queue)
-        print(n, end=' ')
-    else:
-        print("queue from first to last:", end=' ')
-
-
-def testDequeueQueue(queue):
-    print("queue dequeue node: ", queue.dequeue())
-
-
-def testSizeQueue(queue):
-    print("queue size is: ", queue.size())
-
-
-def testEmptyQueue(queue):
-    print("queue is empty: ", queue.isEmpty())
+    def test_empty(self):
+        q = Queue()
+        self.assertTrue(q.isEmpty())
+        q.enqueue(1)
+        self.assertFalse(q.isEmpty())
+        q.dequeue()
+        self.assertTrue(q.isEmpty())
 
 if __name__ == "__main__":
-    q = Queue()
-
-    testEnqueueQueue(q, ['1', '2', '3', 4, '5'])
-
-    testSizeQueue(q)
-
-    testDequeueQueue(q)
-
-    testPrintAllQueue(q)
-
-    testEmptyQueue(q)
+    unittest.main()
