@@ -1,5 +1,5 @@
 # !/usr/bin/pyhon
-# coding:utf-8
+# -*- coding: utf-8 -*-
 
 
 class Deque:
