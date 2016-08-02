@@ -10,6 +10,7 @@ from sort.bubblesort import *
 from sort.insertionsort import *
 from sort.selectionsort import *
 from sort.mergesort import *
+from sort.quicksort import *
 
 
 class TestSortsCase(unittest.TestCase):
@@ -40,6 +41,15 @@ class TestSortsCase(unittest.TestCase):
         res = ms.sort([2, 5, 1, 33, 12, 34, 9, 0])
         self.assertEqual(res, [0, 1, 2, 5, 9, 12, 33, 34])
         res = ms.sort(self.randomDatas(0, 1000, 20))
+        print(res)
+
+    def test_quicksort(self):
+        qs = QuickSort()
+        res = qs.sort([2, 5, 1, 33, 12, 34, 9, 0])
+        self.assertEqual(res, [0, 1, 2, 5, 9, 12, 33, 34])
+        res = qs.sort(self.randomDatas(0, 1000, 20))
+        print(res)
+        res = qs.qsort(self.randomDatas(0, 1000, 20))
         print(res)
 
     def randomDatas(self, min, max, size):
